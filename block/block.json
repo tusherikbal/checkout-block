@@ -1,0 +1,37 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "zen-block-checkout/custom-fields",
+	"version": "0.1.0",
+	"title": "Custom Fields",
+	"description": "Add your own fields to this checkout step.",
+	"category": "woocommerce",
+	"icon": "forms",
+	"textdomain": "zen-block-checkout",
+	"editorStyle": "zbc-editor",
+	"parent": [
+		"woocommerce/checkout-contact-information-block",
+		"woocommerce/checkout-shipping-address-block",
+		"woocommerce/checkout-billing-address-block",
+		"woocommerce/checkout-fields-block"
+	],
+	"supports": {
+		"align": false,
+		"html": false,
+		"reusable": false,
+		"lock": false
+	},
+	"attributes": {
+		"fields": {
+			"type": "array",
+			"default": []
+		},
+		"lock": {
+			"type": "object",
+			"default": {
+				"remove": false,
+				"move": false
+			}
+		}
+	}
+}

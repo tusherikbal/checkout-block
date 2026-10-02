@@ -1,0 +1,27 @@
+// Fields are drawn for looks only; clicks should select the block instead.
+.zbc-preview {
+	pointer-events: none;
+}
+
+.zbc-hint {
+	margin: 8px 0;
+	font-size: 12px;
+	opacity: 0.6;
+}
+
+.zbc-actions {
+	display: flex;
+	align-items: center;
+	gap: 4px;
+	margin-top: 8px;
+}
+
+.zbc-add {
+	padding: 16px;
+	border-top: 1px solid #e0e0e0;
+
+	.components-button {
+		width: 100%;
+		justify-content: center;
+	}
+}
