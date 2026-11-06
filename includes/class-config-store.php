@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class Zen_Block_Checkout_Config_Store {
 
-	const OPTION  = 'zbc_config';
+	const OPTION  = 'zenblch_config';
 	const RUNTIME = 'runtime';
 
 	/**

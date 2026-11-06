@@ -11,12 +11,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class Zen_Block_Checkout_Field_Registrar {
 
-	const NAMESPACE_PREFIX = 'zbc/';
+	const NAMESPACE_PREFIX = 'zenblch/';
 
 	public static function init() {
 		add_action( 'woocommerce_init', array( __CLASS__, 'register' ) );
 		add_action( 'woocommerce_blocks_validate_location_address_fields', array( __CLASS__, 'validate_scoped' ), 10, 3 );
-		add_action( 'wp_head', array( __CLASS__, 'print_scope_css' ) );
+		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'print_scope_css' ) );
 	}
 
 	/**
@@ -37,7 +37,7 @@ class Zen_Block_Checkout_Field_Registrar {
 			// An unticked checkbox arrives as false.
 			if ( '' === $value || false === $value || null === $value ) {
 				$errors->add(
-					'zbc_required_' . $field['key'],
+					'zenblch_required_' . $field['key'],
 					/* translators: %s: field label. */
 					sprintf( __( 'Please enter a value for %s.', 'zen-block-checkout' ), $field['label'] )
 				);
@@ -47,7 +47,7 @@ class Zen_Block_Checkout_Field_Registrar {
 
 	/**
 	 * Hides the copy of a scoped field that belongs to the other address form.
-	 * WooCommerce renders them with the ids "shipping-zbc-<key>" and "billing-zbc-<key>".
+	 * WooCommerce renders them with the ids "shipping-zenblch-<key>" and "billing-zenblch-<key>".
 	 */
 	public static function print_scope_css() {
 		$selectors = array();
@@ -58,14 +58,16 @@ class Zen_Block_Checkout_Field_Registrar {
 			}
 
 			$hidden_group = 'shipping' === ( $field['scope'] ?? 'both' ) ? 'billing' : 'shipping';
-			$id           = '#' . $hidden_group . '-zbc-' . $field['key'];
+			$id           = '#' . $hidden_group . '-zenblch-' . $field['key'];
 			foreach ( array( '.wc-block-components-text-input', '.wc-blocks-components-select', '.wc-block-components-checkbox' ) as $wrapper ) {
 				$selectors[] = $wrapper . ':has(' . $id . ')';
 			}
 		}
 
 		if ( $selectors ) {
-			echo '<style id="zbc-scope">' . esc_html( implode( ',', $selectors ) ) . '{display:none!important}</style>' . "\n";
+			wp_register_style( 'zenblch-scope', false, array(), ZENBLCH_VERSION );
+			wp_enqueue_style( 'zenblch-scope' );
+			wp_add_inline_style( 'zenblch-scope', esc_html( implode( ',', $selectors ) ) . '{display:none!important}' );
 		}
 	}
 
@@ -117,7 +119,7 @@ class Zen_Block_Checkout_Field_Registrar {
 			}
 
 			/* translators: %s: field label. */
-			return new WP_Error( 'zbc_invalid_value', sprintf( __( 'Please provide a valid %s.', 'zen-block-checkout' ), $field['label'] ) );
+			return new WP_Error( 'zenblch_invalid_value', sprintf( __( 'Please provide a valid %s.', 'zen-block-checkout' ), $field['label'] ) );
 		};
 	}
 
@@ -158,7 +160,7 @@ class Zen_Block_Checkout_Field_Registrar {
 			foreach ( array_map( 'trim', explode( ',', $value ) ) as $picked ) {
 				if ( ! in_array( $picked, $options, true ) ) {
 					/* translators: %s: field label. */
-					return new WP_Error( 'zbc_invalid_value', sprintf( __( 'Please provide a valid %s.', 'zen-block-checkout' ), $field['label'] ) );
+					return new WP_Error( 'zenblch_invalid_value', sprintf( __( 'Please provide a valid %s.', 'zen-block-checkout' ), $field['label'] ) );
 				}
 			}
 			return true;

@@ -6,7 +6,7 @@ import Preview from './preview';
 import { STEP_LOCATIONS } from './locations';
 
 // Same rule the frontend applies: a field limited to one address is hidden in the other form.
-// WooCommerce draws these with the ids "shipping-zbc-<key>" and "billing-zbc-<key>".
+// WooCommerce draws these with the ids "shipping-zenblch-<key>" and "billing-zenblch-<key>".
 const WRAPPERS = [
 	'.wc-block-components-text-input',
 	'.wc-blocks-components-select',
@@ -19,7 +19,7 @@ function scopeCss( fields ) {
 		.flatMap( ( field ) => {
 			const hidden = field.scope === 'shipping' ? 'billing' : 'shipping';
 			return WRAPPERS.map(
-				( wrapper ) => `${ wrapper }:has(#${ hidden }-zbc-${ field.key })`
+				( wrapper ) => `${ wrapper }:has(#${ hidden }-zenblch-${ field.key })`
 			);
 		} )
 		.join( ',' );

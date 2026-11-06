@@ -42,9 +42,9 @@ function useNativeValue( el ) {
 
 function Textarea( { el, skin } ) {
 	const [ value, update ] = useNativeValue( el );
-	const id = el.id + '-zbc';
+	const id = el.id + '-zenblch';
 	return (
-		<div className="zbc-skin">
+		<div className="zenblch-skin">
 			<label htmlFor={ id }>{ skin.label }</label>
 			<textarea id={ id } rows="4" value={ value } onChange={ ( e ) => update( e.target.value ) } />
 		</div>
@@ -54,14 +54,14 @@ function Textarea( { el, skin } ) {
 function Radio( { el, skin } ) {
 	const [ value, update ] = useNativeValue( el );
 	return (
-		<div className="zbc-skin">
+		<div className="zenblch-skin">
 			<fieldset>
 				<legend>{ skin.label }</legend>
 				{ skin.options.map( ( option ) => (
-					<label key={ option } className="zbc-choice">
+					<label key={ option } className="zenblch-choice">
 						<input
 							type="radio"
-							name={ el.id + '-zbc' }
+							name={ el.id + '-zenblch' }
 							checked={ value === option }
 							onChange={ () => update( option ) }
 						/>
@@ -84,11 +84,11 @@ function Checkboxes( { el, skin } ) {
 		update( skin.options.filter( ( o ) => next.includes( o ) ).join( ', ' ) );
 	};
 	return (
-		<div className="zbc-skin">
+		<div className="zenblch-skin">
 			<fieldset>
 				<legend>{ skin.label }</legend>
 				{ skin.options.map( ( option ) => (
-					<label key={ option } className="zbc-choice">
+					<label key={ option } className="zenblch-choice">
 						<input
 							type="checkbox"
 							checked={ ticked.includes( option ) }
@@ -110,10 +110,10 @@ function enhance( skins ) {
 		document
 			.querySelectorAll( `input[id$="${ suffix }"], select[id$="${ suffix }"]` )
 			.forEach( ( el ) => {
-				if ( el.dataset.zbcSkin ) {
+				if ( el.dataset.zenblchSkin ) {
 					return;
 				}
-				el.dataset.zbcSkin = '1';
+				el.dataset.zenblchSkin = '1';
 
 				// Hide only the control: the wrapper also holds WooCommerce's validation message.
 				const control = el.tagName === 'SELECT' ? el.closest( '.wc-blocks-components-select' ) || el : el;

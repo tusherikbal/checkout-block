@@ -96,7 +96,7 @@ export default function FieldEditor( {
 					onChange={ ( after ) => onChange( { after } ) }
 				/>
 			) }
-			<div className="zbc-actions">
+			<div className="zenblch-actions">
 				<Button
 					icon="arrow-up-alt2"
 					label={ __( 'Move up', 'zen-block-checkout' ) }

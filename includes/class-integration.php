@@ -18,17 +18,17 @@ class Zen_Block_Checkout_Integration implements IntegrationInterface {
 	}
 
 	public function initialize() {
-		$this->register_script( 'zbc-frontend', 'frontend' );
-		$this->register_script( 'zbc-editor', 'editor' );
-		wp_register_style( 'zbc-editor', ZBC_URL . 'build/editor.css', array(), ZBC_VERSION );
+		$this->register_script( 'zenblch-frontend', 'frontend' );
+		$this->register_script( 'zenblch-editor', 'editor' );
+		wp_register_style( 'zenblch-editor', ZENBLCH_URL . 'build/editor.css', array(), ZENBLCH_VERSION );
 	}
 
 	public function get_script_handles() {
-		return array( 'zbc-frontend' );
+		return array( 'zenblch-frontend' );
 	}
 
 	public function get_editor_script_handles() {
-		return array( 'zbc-editor' );
+		return array( 'zenblch-editor' );
 	}
 
 	public function get_script_data() {
@@ -82,13 +82,13 @@ class Zen_Block_Checkout_Integration implements IntegrationInterface {
 	 * @param string $name   Entry name in build/.
 	 */
 	private function register_script( $handle, $name ) {
-		$asset_file = ZBC_PATH . "build/{$name}.asset.php";
+		$asset_file = ZENBLCH_PATH . "build/{$name}.asset.php";
 		$asset      = file_exists( $asset_file ) ? require $asset_file : array(
 			'dependencies' => array(),
-			'version'      => ZBC_VERSION,
+			'version'      => ZENBLCH_VERSION,
 		);
 
-		wp_register_script( $handle, ZBC_URL . "build/{$name}.js", $asset['dependencies'], $asset['version'], true );
+		wp_register_script( $handle, ZENBLCH_URL . "build/{$name}.js", $asset['dependencies'], $asset['version'], true );
 		wp_set_script_translations( $handle, 'zen-block-checkout' );
 	}
 }

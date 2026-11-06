@@ -8,7 +8,7 @@
 	"category": "woocommerce",
 	"icon": "forms",
 	"textdomain": "zen-block-checkout",
-	"editorStyle": "zbc-editor",
+	"editorStyle": "zenblch-editor",
 	"parent": [
 		"woocommerce/checkout-contact-information-block",
 		"woocommerce/checkout-shipping-address-block",

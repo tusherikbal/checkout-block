@@ -5,22 +5,22 @@ import { getSetting } from '@woocommerce/settings';
  * canvas iframe (a stylesheet enqueued in the parent page never reaches the iframe).
  */
 
-const STYLE_ID = 'zbc-style';
+const STYLE_ID = 'zenblch-style';
 
 // Types WooCommerce styles for text inputs but knows nothing about.
 const EXTRA_TYPES = [ 'date', 'time', 'datetime-local' ];
 
 const BASE = `
 /* The text-input wrapper sets line-height:0, nowrap and absolutely positions every <label>. */
-.zbc-skin{line-height:1.5;white-space:normal;margin:0 0 8px}
-.wc-block-components-text-input .zbc-skin label,
-.wc-block-components-text-input .zbc-skin legend,
-.zbc-skin label,.zbc-skin legend{position:static;transform:none;top:auto;right:auto;max-width:none;overflow:visible;text-overflow:clip;white-space:normal;cursor:auto;display:block;margin:0 0 6px;padding:0;color:inherit;font-size:.875em;line-height:1.5;opacity:.8}
-.wc-block-components-text-input .zbc-skin label.zbc-choice,
-.zbc-skin label.zbc-choice{display:flex;align-items:center;gap:8px;margin:4px 0;font-size:1em;opacity:1;cursor:pointer}
-.zbc-skin textarea{width:100%;box-sizing:border-box;padding:12px;border:1px solid color-mix(in srgb,currentColor 80%,transparent);border-radius:4px;font:inherit;line-height:1.5;background:#fff;color:#2b2d2f}
-.zbc-skin fieldset{border:0;margin:0;padding:0}
-.zbc-skin input[type=checkbox],.zbc-skin input[type=radio]{width:auto;height:auto;margin:0;padding:0;position:static}
+.zenblch-skin{line-height:1.5;white-space:normal;margin:0 0 8px}
+.wc-block-components-text-input .zenblch-skin label,
+.wc-block-components-text-input .zenblch-skin legend,
+.zenblch-skin label,.zenblch-skin legend{position:static;transform:none;top:auto;right:auto;max-width:none;overflow:visible;text-overflow:clip;white-space:normal;cursor:auto;display:block;margin:0 0 6px;padding:0;color:inherit;font-size:.875em;line-height:1.5;opacity:.8}
+.wc-block-components-text-input .zenblch-skin label.zenblch-choice,
+.zenblch-skin label.zenblch-choice{display:flex;align-items:center;gap:8px;margin:4px 0;font-size:1em;opacity:1;cursor:pointer}
+.zenblch-skin textarea{width:100%;box-sizing:border-box;padding:12px;border:1px solid color-mix(in srgb,currentColor 80%,transparent);border-radius:4px;font:inherit;line-height:1.5;background:#fff;color:#2b2d2f}
+.zenblch-skin fieldset{border:0;margin:0;padding:0}
+.zenblch-skin input[type=checkbox],.zenblch-skin input[type=radio]{width:auto;height:auto;margin:0;padding:0;position:static}
 /* The label of an empty date/time input would sit on top of the browser's own mm/dd/yyyy text. */
 .wc-block-components-text-input:has(input[type=date],input[type=time],input[type=datetime-local]) label{top:6px;transform:scale(.82)}
 .wc-block-components-text-input input[type=date],.wc-block-components-text-input input[type=time],.wc-block-components-text-input input[type=datetime-local]{padding:24px 9px 8px}

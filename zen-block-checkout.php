@@ -19,10 +19,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'ZBC_VERSION', '0.1.0' );
-define( 'ZBC_FILE', __FILE__ );
-define( 'ZBC_PATH', plugin_dir_path( __FILE__ ) );
-define( 'ZBC_URL', plugin_dir_url( __FILE__ ) );
+define( 'ZENBLCH_VERSION', '0.1.0' );
+define( 'ZENBLCH_FILE', __FILE__ );
+define( 'ZENBLCH_PATH', plugin_dir_path( __FILE__ ) );
+define( 'ZENBLCH_URL', plugin_dir_url( __FILE__ ) );
 
 /**
  * WooCommerce HPOS + Cart/Checkout Blocks compatibility
@@ -56,9 +56,9 @@ final class Zen_Block_Checkout {
 		if ( ! class_exists( 'WooCommerce' ) ) {
 			return;
 		}
-		require_once ZBC_PATH . 'includes/class-config-store.php';
-		require_once ZBC_PATH . 'includes/class-config-sync.php';
-		require_once ZBC_PATH . 'includes/class-field-registrar.php';
+		require_once ZENBLCH_PATH . 'includes/class-config-store.php';
+		require_once ZENBLCH_PATH . 'includes/class-config-sync.php';
+		require_once ZENBLCH_PATH . 'includes/class-field-registrar.php';
 
 		Zen_Block_Checkout_Config_Sync::init();
 		Zen_Block_Checkout_Field_Registrar::init();
@@ -67,14 +67,14 @@ final class Zen_Block_Checkout {
 		add_action(
 			'woocommerce_blocks_checkout_block_registration',
 			function ( $registry ) {
-				require_once ZBC_PATH . 'includes/class-integration.php';
+				require_once ZENBLCH_PATH . 'includes/class-integration.php';
 				$registry->register( new Zen_Block_Checkout_Integration() );
 			}
 		);
 	}
 
 	public function register_block() {
-		register_block_type( ZBC_PATH . 'block' );
+		register_block_type( ZENBLCH_PATH . 'block' );
 	}
 }
 
