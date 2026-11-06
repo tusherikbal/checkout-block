@@ -12,7 +12,7 @@ function labelOf( field ) {
 }
 
 function TextPreview( { field } ) {
-	const id = `zbc-preview-${ field.key }`;
+	const id = `zenblch-preview-${ field.key }`;
 	return (
 		<div className="wc-block-components-text-input">
 			<input type={ field.type } id={ id } readOnly tabIndex={ -1 } />
@@ -22,7 +22,7 @@ function TextPreview( { field } ) {
 }
 
 function SelectPreview( { field } ) {
-	const id = `zbc-preview-${ field.key }`;
+	const id = `zenblch-preview-${ field.key }`;
 	const options = ( field.optionsText || '' ).split( /\r?\n/ ).filter( Boolean );
 	return (
 		<div className="wc-blocks-components-select">
@@ -50,7 +50,7 @@ function SelectPreview( { field } ) {
 }
 
 function TextareaPreview( { field } ) {
-	const id = `zbc-preview-${ field.key }`;
+	const id = `zenblch-preview-${ field.key }`;
 	return (
 		<div className="wc-block-components-text-input">
 			<textarea id={ id } rows="3" readOnly tabIndex={ -1 } style={ { width: '100%', paddingTop: 24 } } />
@@ -118,7 +118,7 @@ const PREVIEWS = {
 export default function Preview( { fields } ) {
 	if ( ! fields.length ) {
 		return (
-			<p className="zbc-hint">
+			<p className="zenblch-hint">
 				{ __(
 					'Custom fields: select the checkout step and use "Add field" in the sidebar.',
 					'zen-block-checkout'
@@ -128,7 +128,7 @@ export default function Preview( { fields } ) {
 	}
 
 	return (
-		<div className="zbc-preview">
+		<div className="zenblch-preview">
 			{ fields.map( ( field ) => {
 				const Component = PREVIEWS[ field.type ] || TextPreview;
 				return <Component key={ field.key } field={ field } />;

@@ -38,7 +38,7 @@ export default function FieldsEditor( { fields, setFields, step } ) {
 	// One wrapper, not a fragment: the sidebar slot appends each top-level child separately, so a field
 	// added later would land after WooCommerce's own panels (Feedback...) instead of with the others.
 	return (
-		<div className="zbc-panels">
+		<div className="zenblch-panels">
 			<PanelBody title={ __( 'Zen custom fields', 'zen-block-checkout' ) }>
 				{ step && (
 					<p>
@@ -64,7 +64,7 @@ export default function FieldsEditor( { fields, setFields, step } ) {
 				/>
 			) ) }
 			{ /* Below the list, so it stays next to where the new field appears. */ }
-			<div className="zbc-add">
+			<div className="zenblch-add">
 				<Button
 					variant="primary"
 					icon="plus"

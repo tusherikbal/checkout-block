@@ -1,22 +1,22 @@
 // Fields are drawn for looks only; clicks should select the block instead.
-.zbc-preview {
+.zenblch-preview {
 	pointer-events: none;
 }
 
-.zbc-hint {
+.zenblch-hint {
 	margin: 8px 0;
 	font-size: 12px;
 	opacity: 0.6;
 }
 
-.zbc-actions {
+.zenblch-actions {
 	display: flex;
 	align-items: center;
 	gap: 4px;
 	margin-top: 8px;
 }
 
-.zbc-add {
+.zenblch-add {
 	padding: 16px;
 	border-top: 1px solid #e0e0e0;
 
