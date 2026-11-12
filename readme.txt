@@ -2,7 +2,7 @@
 Contributors: tusherikbal
 Tags: woocommerce, checkout, checkout block, custom fields, checkout fields
 Requires at least: 6.0
-Tested up to: 6.8
+Tested up to: 7.1
 Requires PHP: 7.4
 Requires Plugins: woocommerce
 Stable tag: 0.1.0
