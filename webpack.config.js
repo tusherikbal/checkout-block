@@ -8,6 +8,7 @@ module.exports = {
 	entry: {
 		editor: './src/editor/index.js',
 		frontend: './src/frontend/index.js',
+		cart: './src/cart/index.js',
 	},
 	plugins: [
 		...defaultConfig.plugins.filter(

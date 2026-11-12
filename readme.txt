@@ -5,11 +5,11 @@ Requires at least: 6.0
 Tested up to: 7.1
 Requires PHP: 7.4
 Requires Plugins: woocommerce
-Stable tag: 0.1.0
+Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Field editor for the WooCommerce Checkout Block: add custom fields with advanced options and manage default fields.
+Custom fields for the WooCommerce Checkout Block, plus cart extras: notice, free shipping bar, minimum order, cart note.
 
 == Description ==
 Add your own fields to the WooCommerce block checkout and edit the default ones, right inside the block editor.
@@ -19,20 +19,31 @@ Add your own fields to the WooCommerce block checkout and edit the default ones,
 * Show a field in shipping only, billing only, or both
 * Required and optional fields with server-side validation
 
+Cart Block extras (all off until you turn them on, under WooCommerce > Checkout Block Editor):
+
+* Custom text for the "Proceed to Checkout" button
+* A notice in the cart, for example delivery times
+* A free shipping progress bar
+* A minimum order amount, with an optional block at checkout
+* A cart note that is saved with the order and shown in the admin order page and emails
+* Hide cross-sells or the coupon box
+* One click to regenerate a missing Checkout or Cart page
+
 This plugin does not connect to any external service and does not track users.
 
 == Installation ==
 1. Make sure WooCommerce is installed and active.
 2. Upload the plugin to `/wp-content/plugins/` and activate it.
 3. Edit your Checkout page in the block editor and add the "Custom Fields" block inside the checkout step where you want the fields.
+4. For the cart, go to WooCommerce > Checkout Block Editor and turn on the cart features you want.
 
 == Frequently Asked Questions ==
 = Does it work with the classic shortcode checkout? =
-No. It is built for the WooCommerce Checkout Block.
+No. It is built for the WooCommerce Checkout and Cart Blocks. Pages built with the classic shortcode or a page builder such as Elementor are not supported.
 
 == Source code ==
 The JavaScript and CSS in the `build` folder are compiled from the `src` folder. Build with `npm install` then `npm run build` (uses @wordpress/scripts).
 
 == Changelog ==
-= 0.1.0 =
-* Initial release.
+= 1.0.0 =
+* Initial release: custom checkout fields and cart block extras.

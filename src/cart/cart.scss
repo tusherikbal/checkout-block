@@ -1,0 +1,81 @@
+.zenblch-cart-extras {
+	margin: 0 0 16px;
+}
+
+.zenblch-notice {
+	border-left: 4px solid #2271b1;
+	background: rgba(34, 113, 177, 0.08);
+	padding: 10px 14px;
+	margin: 0 0 12px;
+	border-radius: 2px;
+	font-size: 0.9em;
+
+	p {
+		margin: 0;
+	}
+
+	p + p {
+		margin-top: 6px;
+	}
+
+	&--success {
+		border-left-color: #00a32a;
+		background: rgba(0, 163, 42, 0.08);
+	}
+
+	&--warning {
+		border-left-color: #dba617;
+		background: rgba(219, 166, 23, 0.12);
+	}
+}
+
+.zenblch-progress {
+	margin: 0 0 12px;
+	font-size: 0.9em;
+
+	p {
+		margin: 0 0 6px;
+	}
+
+	&__track {
+		height: 8px;
+		border-radius: 4px;
+		background: rgba(0, 0, 0, 0.12);
+		overflow: hidden;
+	}
+
+	&__bar {
+		height: 100%;
+		border-radius: 4px;
+		background: #00a32a;
+		transition: width 0.3s ease;
+	}
+}
+
+.zenblch-note {
+	margin: 0 0 12px;
+
+	label {
+		display: block;
+		margin: 0 0 6px;
+		font-size: 0.9em;
+	}
+
+	textarea {
+		width: 100%;
+		box-sizing: border-box;
+		padding: 8px 10px;
+		font: inherit;
+		border: 1px solid currentColor;
+		border-radius: 4px;
+		background: transparent;
+		color: inherit;
+	}
+
+	&__count {
+		display: block;
+		text-align: right;
+		font-size: 0.75em;
+		opacity: 0.7;
+	}
+}
