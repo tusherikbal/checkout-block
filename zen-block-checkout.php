@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: Zen Block Checkout
+ * Plugin Name: Zen Block Checkout editor
  * Description: Field editor for the WooCommerce Checkout Block. Add custom fields (with advanced options) and manage the default fields.
  * Version: 0.1.0
  * Author: Tusher Ikbal

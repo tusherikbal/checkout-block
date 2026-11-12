@@ -1,4 +1,4 @@
-=== Zen Block Checkout ===
+=== Zen Block Checkout editor ===
 Contributors: tusherikbal
 Tags: woocommerce, checkout, checkout block, custom fields, checkout fields
 Requires at least: 6.0
@@ -24,7 +24,7 @@ This plugin does not connect to any external service and does not track users.
 == Installation ==
 1. Make sure WooCommerce is installed and active.
 2. Upload the plugin to `/wp-content/plugins/` and activate it.
-3. Edit your Checkout page in the block editor and select the Zen custom fields block.
+3. Edit your Checkout page in the block editor and add the "Custom Fields" block inside the checkout step where you want the fields.
 
 == Frequently Asked Questions ==
 = Does it work with the classic shortcode checkout? =
