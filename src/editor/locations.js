@@ -50,6 +50,8 @@ export const SCOPES = [
 export const FIELD_TYPES = [
 	{ value: 'text', label: __( 'Text', 'zen-block-checkout' ) },
 	{ value: 'select', label: __( 'Dropdown', 'zen-block-checkout' ) },
+	{ value: 'country', label: __( 'Country', 'zen-block-checkout' ) },
+	{ value: 'checkbox', label: __( 'Checkbox', 'zen-block-checkout' ) },
 	{ value: 'email', label: __( 'Email', 'zen-block-checkout' ) },
 	{ value: 'tel', label: __( 'Phone', 'zen-block-checkout' ) },
 	{ value: 'number', label: __( 'Number', 'zen-block-checkout' ) },
@@ -60,6 +62,7 @@ export const FIELD_TYPES = [
 	{ value: 'textarea', label: __( 'Textarea', 'zen-block-checkout' ) },
 	{ value: 'radio', label: __( 'Radio buttons', 'zen-block-checkout' ) },
 	{ value: 'checkboxes', label: __( 'Checkboxes', 'zen-block-checkout' ) },
+	{ value: 'info', label: __( 'Heading and text', 'zen-block-checkout' ) },
 ];
 
 // Types that need a list of options.

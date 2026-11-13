@@ -102,7 +102,22 @@ function Checkboxes( { el, skin } ) {
 	);
 }
 
-const SKINS = { textarea: Textarea, radio: Radio, checkboxes: Checkboxes };
+// No control at all: a heading and some text. The native field behind it is never filled in.
+function Info( { skin } ) {
+	return (
+		<div className="zenblch-skin zenblch-info">
+			{ skin.label && <h4>{ skin.label }</h4> }
+			{ ( skin.text || '' )
+				.split( /\n+/ )
+				.filter( Boolean )
+				.map( ( line, index ) => (
+					<p key={ index }>{ line }</p>
+				) ) }
+		</div>
+	);
+}
+
+const SKINS = { textarea: Textarea, radio: Radio, checkboxes: Checkboxes, info: Info };
 
 function enhance( skins ) {
 	Object.entries( skins ).forEach( ( [ id, skin ] ) => {

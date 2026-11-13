@@ -131,10 +131,10 @@ class Zen_Block_Checkout_Field_Registrar {
 	 * @return string
 	 */
 	public static function wc_type( $type ) {
-		if ( 'radio' === $type ) {
+		if ( 'radio' === $type || 'country' === $type ) {
 			return 'select';
 		}
-		if ( in_array( $type, Zen_Block_Checkout_Config_Sync::INPUT_TYPES, true ) || in_array( $type, array( 'textarea', 'checkboxes' ), true ) ) {
+		if ( in_array( $type, Zen_Block_Checkout_Config_Sync::INPUT_TYPES, true ) || in_array( $type, array( 'textarea', 'checkboxes', 'info' ), true ) ) {
 			return 'text';
 		}
 		return $type;
@@ -167,6 +167,22 @@ class Zen_Block_Checkout_Field_Registrar {
 		};
 	}
 
+	/**
+	 * Every country WooCommerce knows, as value (country code) => label (name).
+	 *
+	 * @return array[]
+	 */
+	private static function country_options() {
+		$options = array();
+		foreach ( WC()->countries->get_countries() as $code => $name ) {
+			$options[] = array(
+				'value' => $code,
+				'label' => html_entity_decode( $name, ENT_QUOTES, 'UTF-8' ),
+			);
+		}
+		return $options;
+	}
+
 	public static function register() {
 		if ( ! function_exists( 'woocommerce_register_additional_checkout_field' ) ) {
 			return;
@@ -184,6 +200,12 @@ class Zen_Block_Checkout_Field_Registrar {
 				'required' => $field['required'] && 'both' === ( $field['scope'] ?? 'both' ),
 			);
 
+			// Heading and text is drawn by the browser script. It holds no value, so keep it out of the order.
+			if ( 'info' === $field['type'] ) {
+				$args['required']                   = false;
+				$args['show_in_order_confirmation'] = false;
+			}
+
 			if ( in_array( $field['type'], Zen_Block_Checkout_Config_Sync::INPUT_TYPES, true ) ) {
 				$args['validate_callback'] = self::validator( $field['type'] );
 			} elseif ( 'checkboxes' === $field['type'] ) {
@@ -191,7 +213,9 @@ class Zen_Block_Checkout_Field_Registrar {
 			} elseif ( 'textarea' === $field['type'] ) {
 				// The default sanitizer is a no-op, but be explicit that line breaks are wanted.
 				$args['sanitize_callback'] = function ( $value ) {
-					return sanitize_textarea_field( (string) $value );
+					$value = sanitize_textarea_field( (string) $value );
+					// A shopper can post anything to the Store API, so keep the stored value a sensible size.
+					return function_exists( 'mb_substr' ) ? mb_substr( $value, 0, 5000 ) : substr( $value, 0, 5000 );
 				};
 			}
 
@@ -201,6 +225,13 @@ class Zen_Block_Checkout_Field_Registrar {
 				$placed[ $anchor ] = ( $placed[ $anchor ] ?? 0 ) + 1;
 				// WooCommerce sorts address fields by index; the fraction slots us right after the anchor.
 				$args['index'] = $base + $placed[ $anchor ] / 100;
+			}
+
+			if ( 'country' === $field['type'] ) {
+				$args['options'] = self::country_options();
+				if ( '' !== ( $field['placeholder'] ?? '' ) ) {
+					$args['placeholder'] = $field['placeholder'];
+				}
 			}
 
 			if ( in_array( $field['type'], array( 'select', 'radio' ), true ) ) {

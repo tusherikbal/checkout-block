@@ -1,8 +1,8 @@
 <?php
 /**
- * Plugin Name: Zen Block Checkout
- * Description: Field editor for the WooCommerce Checkout Block. Add custom fields (with advanced options) and manage the default fields.
- * Version: 0.1.0
+ * Plugin Name: Zen Block Checkout editor
+ * Description: Add custom fields to the WooCommerce Checkout Block, plus cart extras: a notice, a free shipping bar and a minimum order.
+ * Version: 1.0.1
  * Author: Tusher Ikbal
  * Author URI: https://tusherikbal.online
  * License: GPL-2.0-or-later
@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'ZENBLCH_VERSION', '0.1.0' );
+define( 'ZENBLCH_VERSION', '1.0.1' );
 define( 'ZENBLCH_FILE', __FILE__ );
 define( 'ZENBLCH_PATH', plugin_dir_path( __FILE__ ) );
 define( 'ZENBLCH_URL', plugin_dir_url( __FILE__ ) );
@@ -60,8 +60,22 @@ final class Zen_Block_Checkout {
 		require_once ZENBLCH_PATH . 'includes/class-config-sync.php';
 		require_once ZENBLCH_PATH . 'includes/class-field-registrar.php';
 
+		require_once ZENBLCH_PATH . 'includes/class-cart-settings.php';
+		Zen_Block_Checkout_Cart_Settings::init();
+
+		// The cart features implement a WooCommerce Blocks interface, so only load them when it exists.
+		if ( interface_exists( '\Automattic\WooCommerce\Blocks\Integrations\IntegrationInterface' ) ) {
+			require_once ZENBLCH_PATH . 'includes/class-cart-features.php';
+			Zen_Block_Checkout_Cart_Features::init();
+		}
+
 		Zen_Block_Checkout_Config_Sync::init();
 		Zen_Block_Checkout_Field_Registrar::init();
+
+		if ( is_admin() ) {
+			require_once ZENBLCH_PATH . 'includes/class-admin-page.php';
+			Zen_Block_Checkout_Admin_Page::init();
+		}
 
 		add_action( 'init', array( $this, 'register_block' ) );
 		add_action(

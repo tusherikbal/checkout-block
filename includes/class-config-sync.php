@@ -34,12 +34,12 @@ class Zen_Block_Checkout_Config_Sync {
 	 * dropdown for radio) that the browser script hides and replaces with its own control,
 	 * so position, scope, validation and order display all stay WooCommerce's.
 	 */
-	const SKIN_TYPES = array( 'textarea', 'radio', 'checkboxes' );
+	const SKIN_TYPES = array( 'textarea', 'radio', 'checkboxes', 'info' );
 
 	/** Types that need a list of options. */
 	const OPTION_TYPES = array( 'select', 'radio', 'checkboxes' );
 
-	const TYPES = array( 'text', 'select', 'checkbox', 'email', 'tel', 'number', 'url', 'date', 'time', 'datetime-local', 'textarea', 'radio', 'checkboxes' );
+	const TYPES = array( 'text', 'select', 'checkbox', 'email', 'tel', 'number', 'url', 'date', 'time', 'datetime-local', 'textarea', 'radio', 'checkboxes', 'country', 'info' );
 
 	/**
 	 * Default address fields a custom address field can be placed after (key => WooCommerce sort index).
@@ -108,6 +108,12 @@ class Zen_Block_Checkout_Config_Sync {
 	 */
 	public static function on_render( $pre, $parsed_block ) {
 		if ( 'woocommerce/checkout' !== ( $parsed_block['blockName'] ?? '' ) ) {
+			return $pre;
+		}
+
+		// Only the real checkout page may speak for the store. Any author can put a checkout block in a
+		// post and preview it, and that must not be able to rewrite the fields shoppers see.
+		if ( is_admin() || ! function_exists( 'is_checkout' ) || ! is_checkout() ) {
 			return $pre;
 		}
 
@@ -187,6 +193,7 @@ class Zen_Block_Checkout_Config_Sync {
 			'label'       => $label,
 			'required'    => ! empty( $raw['required'] ),
 			'placeholder' => '',
+			'text'        => '',
 			'options'     => array(),
 			'after'       => '',
 			'scope'       => 'both',
@@ -208,6 +215,17 @@ class Zen_Block_Checkout_Config_Sync {
 		$after = (string) ( $raw['after'] ?? '' );
 		if ( 'address' === $location && isset( self::ADDRESS_ANCHORS[ $after ] ) ) {
 			$field['after'] = $after;
+		}
+
+		// Heading and text only: nothing is asked, so nothing can be required or stored.
+		if ( 'info' === $type ) {
+			$field['required'] = false;
+			$field['text']     = sanitize_textarea_field( (string) ( $raw['text'] ?? '' ) );
+		}
+
+		// The list of countries comes from WooCommerce when the field is registered.
+		if ( 'country' === $type ) {
+			$field['placeholder'] = sanitize_text_field( (string) ( $raw['placeholder'] ?? '' ) );
 		}
 
 		if ( in_array( $type, self::OPTION_TYPES, true ) ) {

@@ -1,0 +1,22 @@
+.zenblch-admin .zenblch-version{font-size:12px;font-weight:400;color:#646970;margin-left:6px}
+.zenblch-admin .zenblch-lead{font-size:14px;max-width:680px}
+.zenblch-admin .zenblch-card{background:#fff;border:1px solid #c3c4c7;border-radius:4px;padding:16px 20px;margin:0 0 16px;max-width:760px}
+.zenblch-admin .zenblch-card h2{margin-top:0}
+.zenblch-admin .zenblch-card h3{margin:16px 0 8px;font-size:13px}
+.zenblch-admin .zenblch-hero{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.zenblch-admin .zenblch-warning{margin:0;flex:1 1 100%;color:#8a4600}
+.zenblch-admin .zenblch-status{margin:0}
+.zenblch-admin .zenblch-status li{margin:0 0 8px;padding-left:24px;position:relative}
+.zenblch-admin .zenblch-status li:before{position:absolute;left:0;font-weight:700}
+.zenblch-admin .zenblch-status .is-ok:before{content:"\2713";color:#00a32a}
+.zenblch-admin .zenblch-status .is-bad:before{content:"!";color:#d63638}
+.zenblch-admin .zenblch-status .is-info:before{content:"\2022";color:#646970}
+.zenblch-admin .zenblch-notice{max-width:760px;margin:12px 0 16px}
+.zenblch-admin .zenblch-notice form{margin:0 0 10px}
+.zenblch-admin .button.disabled{pointer-events:none;opacity:.5}
+.zenblch-admin .zenblch-tags{display:flex;flex-wrap:wrap;gap:6px;margin:0}
+.zenblch-admin .zenblch-tags span{background:#f0f0f1;border-radius:3px;padding:3px 10px;font-size:12px}
+.zenblch-admin .nav-tab-wrapper{margin:12px 0 16px}
+.zenblch-admin .zenblch-hero .zenblch-status--inline{margin:0;flex:1 1 220px}
+.zenblch-admin .zenblch-hero .zenblch-status--inline li:last-child{margin-bottom:0}
+.zenblch-admin .zenblch-settings h3:first-of-type{margin-top:0}
