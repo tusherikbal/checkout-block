@@ -1,8 +1,8 @@
 <?php
 /**
  * Plugin Name: Zen Block Checkout editor
- * Description: Field editor for the WooCommerce Checkout Block. Add custom fields (with advanced options) and manage the default fields.
- * Version: 1.0.0
+ * Description: Add custom fields to the WooCommerce Checkout Block, plus cart extras: a notice, a free shipping bar and a minimum order.
+ * Version: 1.0.1
  * Author: Tusher Ikbal
  * Author URI: https://tusherikbal.online
  * License: GPL-2.0-or-later
@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'ZENBLCH_VERSION', '1.0.0' );
+define( 'ZENBLCH_VERSION', '1.0.1' );
 define( 'ZENBLCH_FILE', __FILE__ );
 define( 'ZENBLCH_PATH', plugin_dir_path( __FILE__ ) );
 define( 'ZENBLCH_URL', plugin_dir_url( __FILE__ ) );

@@ -5,16 +5,17 @@ Requires at least: 6.0
 Tested up to: 7.1
 Requires PHP: 7.4
 Requires Plugins: woocommerce
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 Custom fields for the WooCommerce Checkout Block, plus cart extras: notice, free shipping bar and minimum order.
 
 == Description ==
-Add your own fields to the WooCommerce block checkout and edit the default ones, right inside the block editor.
+Add your own fields to the WooCommerce block checkout, right inside the block editor.
 
-* Text, dropdown, email, phone, number, URL, date, time, textarea, radio and checkbox-group fields
+* Text, dropdown, country, checkbox, email, phone, number, URL, date, time, textarea, radio and checkbox-group fields
+* Heading and text blocks to show a short message between fields
 * Place fields in Contact information, Shipping address, Billing address or Order information
 * Show a field in shipping only, billing only, or both
 * Required and optional fields with server-side validation
@@ -42,5 +43,17 @@ No. It is built for the WooCommerce Checkout and Cart Blocks. Pages built with t
 The JavaScript and CSS in the `build` folder are compiled from the `src` folder. Build with `npm install` then `npm run build` (uses @wordpress/scripts).
 
 == Changelog ==
+
+= 1.0.1 =
+* New: Checkbox field, for terms, consent or newsletter opt-ins.
+* New: Country field with the full WooCommerce country list.
+* New: Heading and text, to show a short message between checkout fields.
+* New: WooCommerce > Checkout Block Editor page with Checkout and Cart tabs.
+* New: Cart notice, free shipping progress bar and minimum order amount.
+* New: One-click regenerate for a missing Checkout or Cart page.
+* Security: A checkout block in any other post can no longer change the checkout fields.
+* Security: Long textarea values are now cut to 5000 characters.
+* Tweak: Plugin data is removed when the plugin is deleted.
+
 = 1.0.0 =
-* Initial release: custom checkout fields and cart block extras.
+* Initial release.

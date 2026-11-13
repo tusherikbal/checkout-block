@@ -29,29 +29,38 @@ export default function FieldEditor( {
 			<SelectControl
 				label={ __( 'Type', 'zen-block-checkout' ) }
 				value={ field.type }
-				options={
-					// Fields made before the single checkbox was dropped keep working, so keep it selectable for them.
-					field.type === 'checkbox'
-						? [ ...FIELD_TYPES, { value: 'checkbox', label: __( 'Checkbox (old)', 'zen-block-checkout' ) } ]
-						: FIELD_TYPES
-				}
+				options={ FIELD_TYPES }
 				onChange={ ( type ) => onChange( { type } ) }
 			/>
 			<TextControl
-				label={ __( 'Label', 'zen-block-checkout' ) }
+				label={
+					field.type === 'info'
+						? __( 'Heading', 'zen-block-checkout' )
+						: __( 'Label', 'zen-block-checkout' )
+				}
 				value={ field.label }
 				onChange={ ( label ) => onChange( { label } ) }
 			/>
-			<ToggleControl
-				label={
-					field.type === 'checkbox'
-						? __( 'Must be ticked', 'zen-block-checkout' )
-						: __( 'Required', 'zen-block-checkout' )
-				}
-				checked={ !! field.required }
-				onChange={ ( required ) => onChange( { required } ) }
-			/>
-			{ field.type === 'select' && (
+			{ field.type === 'info' && (
+				<TextareaControl
+					label={ __( 'Text', 'zen-block-checkout' ) }
+					help={ __( 'Shown as plain text. A new line starts a new paragraph.', 'zen-block-checkout' ) }
+					value={ field.text || '' }
+					onChange={ ( text ) => onChange( { text } ) }
+				/>
+			) }
+			{ field.type !== 'info' && (
+				<ToggleControl
+					label={
+						field.type === 'checkbox'
+							? __( 'Must be ticked', 'zen-block-checkout' )
+							: __( 'Required', 'zen-block-checkout' )
+					}
+					checked={ !! field.required }
+					onChange={ ( required ) => onChange( { required } ) }
+				/>
+			) }
+			{ ( field.type === 'select' || field.type === 'country' ) && (
 				<TextControl
 					label={ __( 'Placeholder', 'zen-block-checkout' ) }
 					value={ field.placeholder }

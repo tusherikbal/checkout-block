@@ -99,6 +99,20 @@ function CheckboxPreview( { field } ) {
 	);
 }
 
+function InfoPreview( { field } ) {
+	return (
+		<div className="zenblch-info">
+			{ field.label && <h4>{ field.label }</h4> }
+			{ ( field.text || '' )
+				.split( /\n+/ )
+				.filter( Boolean )
+				.map( ( line, index ) => (
+					<p key={ index }>{ line }</p>
+				) ) }
+		</div>
+	);
+}
+
 const PREVIEWS = {
 	text: TextPreview,
 	email: TextPreview,
@@ -112,7 +126,9 @@ const PREVIEWS = {
 	radio: ChoicesPreview,
 	checkboxes: ChoicesPreview,
 	select: SelectPreview,
+	country: SelectPreview,
 	checkbox: CheckboxPreview,
+	info: InfoPreview,
 };
 
 export default function Preview( { fields } ) {

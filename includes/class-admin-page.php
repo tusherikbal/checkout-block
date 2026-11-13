@@ -260,6 +260,8 @@ class Zen_Block_Checkout_Admin_Page {
 		$types       = array(
 			__( 'Text', 'zen-block-checkout' ),
 			__( 'Dropdown', 'zen-block-checkout' ),
+			__( 'Country', 'zen-block-checkout' ),
+			__( 'Checkbox', 'zen-block-checkout' ),
 			__( 'Email', 'zen-block-checkout' ),
 			__( 'Phone', 'zen-block-checkout' ),
 			__( 'Number', 'zen-block-checkout' ),
@@ -270,6 +272,7 @@ class Zen_Block_Checkout_Admin_Page {
 			__( 'Textarea', 'zen-block-checkout' ),
 			__( 'Radio buttons', 'zen-block-checkout' ),
 			__( 'Checkboxes', 'zen-block-checkout' ),
+			__( 'Heading and text', 'zen-block-checkout' ),
 		);
 		$places      = array(
 			__( 'Contact information', 'zen-block-checkout' ),
