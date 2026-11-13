@@ -41,7 +41,6 @@ class Zen_Block_Checkout_Cart_Settings {
 	 */
 	public static function defaults() {
 		return array(
-			'button_label'       => '',
 			'notice_enabled'     => 0,
 			'notice_text'        => '',
 			'notice_style'       => 'info',
@@ -53,11 +52,6 @@ class Zen_Block_Checkout_Cart_Settings {
 			'min_amount'         => '',
 			'min_message'        => __( 'The minimum order is {amount}.', 'zen-block-checkout' ),
 			'min_enforce'        => 1,
-			'note_enabled'       => 0,
-			'note_label'         => __( 'Add a note to your order', 'zen-block-checkout' ),
-			'note_placeholder'   => '',
-			'hide_cross_sells'   => 0,
-			'hide_coupon'        => 0,
 		);
 	}
 
@@ -77,11 +71,11 @@ class Zen_Block_Checkout_Cart_Settings {
 		$input = is_array( $input ) ? wp_unslash( $input ) : array();
 		$out   = array();
 
-		foreach ( array( 'notice_enabled', 'progress_enabled', 'min_enabled', 'min_enforce', 'note_enabled', 'hide_cross_sells', 'hide_coupon' ) as $key ) {
+		foreach ( array( 'notice_enabled', 'progress_enabled', 'min_enabled', 'min_enforce' ) as $key ) {
 			$out[ $key ] = empty( $input[ $key ] ) ? 0 : 1;
 		}
 
-		foreach ( array( 'button_label', 'progress_below', 'progress_done', 'min_message', 'note_label', 'note_placeholder' ) as $key ) {
+		foreach ( array( 'progress_below', 'progress_done', 'min_message' ) as $key ) {
 			$out[ $key ] = isset( $input[ $key ] ) ? sanitize_text_field( $input[ $key ] ) : '';
 		}
 

@@ -328,24 +328,13 @@ class Zen_Block_Checkout_Admin_Page {
 		self::render_tab_header(
 			'cart',
 			$status,
-			__( 'Customize the WooCommerce Cart Block: a notice, a free shipping bar, a minimum order, a cart note and more. Everything is off until you turn it on.', 'zen-block-checkout' )
+			__( 'Add what the WooCommerce Cart Block does not have: a notice, a free shipping bar and a minimum order. Everything is off until you turn it on. For the button text, cross-sells and coupon box, edit the cart page in the block editor.', 'zen-block-checkout' )
 		);
 		?>
 		<form method="post" action="options.php" class="zenblch-card zenblch-settings">
 			<?php settings_fields( Zen_Block_Checkout_Cart_Settings::GROUP ); ?>
 			<?php // Later field of the same name wins, so saving comes back to this tab. ?>
 			<input type="hidden" name="_wp_http_referer" value="<?php echo esc_attr( add_query_arg( array( 'page' => self::SLUG, 'tab' => 'cart' ), 'admin.php' ) ); ?>" />
-
-			<h3><?php esc_html_e( 'Checkout button', 'zen-block-checkout' ); ?></h3>
-			<table class="form-table" role="presentation">
-				<?php
-				self::row(
-					__( 'Button text', 'zen-block-checkout' ),
-					self::input( $values, 'button_label', 'text', 'placeholder="' . esc_attr__( 'Proceed to Checkout', 'zen-block-checkout' ) . '"' ),
-					__( 'Leave empty to keep the default text.', 'zen-block-checkout' )
-				);
-				?>
-			</table>
 
 			<h3><?php esc_html_e( 'Notice', 'zen-block-checkout' ); ?></h3>
 			<table class="form-table" role="presentation">
@@ -389,27 +378,6 @@ class Zen_Block_Checkout_Admin_Page {
 				);
 				self::row( __( 'Message', 'zen-block-checkout' ), self::input( $values, 'min_message' ), __( '{amount} is replaced with the minimum amount.', 'zen-block-checkout' ) );
 				self::row( __( 'Block checkout', 'zen-block-checkout' ), self::checkbox( $values, 'min_enforce', __( 'Do not let customers place the order below the minimum', 'zen-block-checkout' ) ), __( 'If off, the message is only a notice in the cart.', 'zen-block-checkout' ) );
-				?>
-			</table>
-
-			<h3><?php esc_html_e( 'Cart note', 'zen-block-checkout' ); ?></h3>
-			<table class="form-table" role="presentation">
-				<?php
-				self::row( __( 'Cart note', 'zen-block-checkout' ), self::checkbox( $values, 'note_enabled', __( 'Let customers leave a note in the cart', 'zen-block-checkout' ) ), __( 'The note is saved with the order and shown in the admin order page, the order emails and the order details.', 'zen-block-checkout' ) );
-				self::row( __( 'Label', 'zen-block-checkout' ), self::input( $values, 'note_label' ) );
-				self::row( __( 'Placeholder', 'zen-block-checkout' ), self::input( $values, 'note_placeholder' ) );
-				?>
-			</table>
-
-			<h3><?php esc_html_e( 'Hide cart elements', 'zen-block-checkout' ); ?></h3>
-			<table class="form-table" role="presentation">
-				<?php
-				self::row(
-					__( 'Hide', 'zen-block-checkout' ),
-					self::checkbox( $values, 'hide_cross_sells', __( 'Cross-sells ("You may be interested in")', 'zen-block-checkout' ) )
-					. '<br>' . self::checkbox( $values, 'hide_coupon', __( 'Coupon box', 'zen-block-checkout' ) ),
-					__( 'These are hidden with CSS, so a WooCommerce update that renames them may bring them back.', 'zen-block-checkout' )
-				);
 				?>
 			</table>
 

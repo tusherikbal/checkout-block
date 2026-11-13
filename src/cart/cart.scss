@@ -51,31 +51,3 @@
 		transition: width 0.3s ease;
 	}
 }
-
-.zenblch-note {
-	margin: 0 0 12px;
-
-	label {
-		display: block;
-		margin: 0 0 6px;
-		font-size: 0.9em;
-	}
-
-	textarea {
-		width: 100%;
-		box-sizing: border-box;
-		padding: 8px 10px;
-		font: inherit;
-		border: 1px solid currentColor;
-		border-radius: 4px;
-		background: transparent;
-		color: inherit;
-	}
-
-	&__count {
-		display: block;
-		text-align: right;
-		font-size: 0.75em;
-		opacity: 0.7;
-	}
-}

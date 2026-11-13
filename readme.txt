@@ -9,7 +9,7 @@ Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Custom fields for the WooCommerce Checkout Block, plus cart extras: notice, free shipping bar, minimum order, cart note.
+Custom fields for the WooCommerce Checkout Block, plus cart extras: notice, free shipping bar and minimum order.
 
 == Description ==
 Add your own fields to the WooCommerce block checkout and edit the default ones, right inside the block editor.
@@ -21,12 +21,9 @@ Add your own fields to the WooCommerce block checkout and edit the default ones,
 
 Cart Block extras (all off until you turn them on, under WooCommerce > Checkout Block Editor):
 
-* Custom text for the "Proceed to Checkout" button
 * A notice in the cart, for example delivery times
 * A free shipping progress bar
 * A minimum order amount, with an optional block at checkout
-* A cart note that is saved with the order and shown in the admin order page and emails
-* Hide cross-sells or the coupon box
 * One click to regenerate a missing Checkout or Cart page
 
 This plugin does not connect to any external service and does not track users.
