@@ -51,6 +51,7 @@ class Zen_Block_Checkout_Integration implements IntegrationInterface {
 				$skins[ $id ] = array(
 					'type'     => $field['type'],
 					'label'    => $field['label'],
+					'text'     => $field['text'] ?? '',
 					'required' => $field['required'],
 					'options'  => $field['options'],
 				);

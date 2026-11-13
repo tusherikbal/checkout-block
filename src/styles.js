@@ -20,6 +20,9 @@ const BASE = `
 .zenblch-skin label.zenblch-choice{display:flex;align-items:center;gap:8px;margin:4px 0;font-size:1em;opacity:1;cursor:pointer}
 .zenblch-skin textarea{width:100%;box-sizing:border-box;padding:12px;border:1px solid color-mix(in srgb,currentColor 80%,transparent);border-radius:4px;font:inherit;line-height:1.5;background:#fff;color:#2b2d2f}
 .zenblch-skin fieldset{border:0;margin:0;padding:0}
+.zenblch-info{margin:0 0 12px}
+.zenblch-info h4{margin:0 0 4px;font-size:1em;font-weight:600}
+.zenblch-info p{margin:0 0 6px;font-size:.9em;line-height:1.5;opacity:.85}
 .zenblch-skin input[type=checkbox],.zenblch-skin input[type=radio]{width:auto;height:auto;margin:0;padding:0;position:static}
 /* The label of an empty date/time input would sit on top of the browser's own mm/dd/yyyy text. */
 .wc-block-components-text-input:has(input[type=date],input[type=time],input[type=datetime-local]) label{top:6px;transform:scale(.82)}

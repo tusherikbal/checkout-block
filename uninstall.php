@@ -10,3 +10,4 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 }
 
 delete_option( 'zenblch_config' );
+delete_option( 'zenblch_cart' );
